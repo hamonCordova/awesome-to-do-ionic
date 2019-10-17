@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isEditing">
+      Adicionar Tarefa
+    </ion-title>
+    <ion-title *ngIf="isEditing">
+      Alterar Tarefa
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <header>
+      <h1 *ngIf="!isEditing">Adicionar Nova Tarefa</h1>
+      <h1 *ngIf="isEditing">Alterar Tarefa</h1>
+      <p>As tarefas são pequenas partes das lições</p>
+    </header>
+
+    <form [formGroup]="formGroup">
+      <ion-list>
+
+        <ion-item>
+          <ion-label position="floating">Título</ion-label>
+          <ion-input formControlName="titulo" name="titulo" type="text" min="1" max="50" required="true"></ion-input>
+        </ion-item>
+        <div *ngIf="formGroup.controls.titulo.errors">
+          <span class="error" *ngIf="formGroup.controls.titulo.errors.required && formGroup.controls.titulo.dirty">
+             * Um título deve ser preenchido
+          </span>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Descrição</ion-label>
+          <ion-textarea formControlName="descricao" name="descricao" max="255"></ion-textarea>
+        </ion-item>
+
+        <ion-grid id="prioridades-grid" padding-bottom>
+          <ion-row>
+            <ion-col size="4">
+              <ion-badge [color]="prioridade == 1 ? 'secondary' : undefined" (click)="setPrioridade(1)">Normal</ion-badge>
+            </ion-col>
+            <ion-col size="4">
+              <ion-badge [color]="prioridade == 2 ? 'warning' : undefined" (click)="setPrioridade(2)">Médio</ion-badge>
+            </ion-col>
+            <ion-col size="4">
+              <ion-badge [color]="prioridade == 3 ? 'danger' : undefined" (click)="setPrioridade(3)">Urgente</ion-badge>
+            </ion-col>
+          </ion-row>
+       </ion-grid>
+
+       <ion-button *ngIf="!isEditing" margin-top expand="block" class="btn-purple" (click)="addTarefa()" [disabled]="!formGroup.valid">Cadastrar Tarefa</ion-button>
+      <ion-button *ngIf="isEditing" margin-top expand="block" class="btn-purple" (click)="editTarefa()" [disabled]="!formGroup.valid">Alterar Tarefa</ion-button>
+
+      </ion-list>
+    </form>
+
+
+
+</ion-content>

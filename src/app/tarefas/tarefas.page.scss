@@ -1,0 +1,25 @@
+h2 {
+    color: rgb(36, 36, 36);
+    font-size: 1.2rem;
+}
+
+p {
+    text-align: justify;
+    color: #666;
+}
+
+ion-item.alta {
+    --background: rgb(255, 192, 192);
+}
+
+ion-item.medio {
+    --background: rgb(255, 254, 211);
+}
+
+ion-item.normal {
+    --background: rgb(189, 231, 255);
+}
+
+ion-fab-button {
+    --background: linear-gradient(to top, #9e2ffe, #3989e0, #0dafd3);
+}

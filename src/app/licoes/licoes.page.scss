@@ -1,0 +1,63 @@
+
+
+//Urgente, médio, normal
+ion-item {
+
+    ion-icon {
+        font-size: 2rem;
+    }
+
+    ion-label {
+        margin-left: 30px;
+    }
+
+    img {
+        width: 60px;
+        height: 60px;
+        margin-left: 20px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .date {
+        font-size: 0.9rem;
+
+        ion-icon {
+            font-size: 1rem;
+        }
+
+    }
+
+    &.urgente {
+        .date {
+            color: var(--ion-color-danger);
+        }
+    }
+
+    &.medio {
+        .date {
+            color: var(--ion-color-warning-shade);
+        }
+    }
+
+    &.normal {
+        .date {
+            color: var(--ion-color-secondary-shade);
+        }
+    }
+
+
+
+}
+
+ion-fab-button {
+    --background: linear-gradient(to top, #9e2ffe, #3989e0, #0dafd3) !important;
+} 
+
+.gradient {
+    background: -webkit-radial-gradient(ellipse at top left,#9456c6,#f877ed) !important;
+    background: radial-gradient(ellipse at top left,#9456c6,#f877ed) !important; 
+}

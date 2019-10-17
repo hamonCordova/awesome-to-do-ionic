@@ -1,0 +1,54 @@
+
+header {
+
+    img {
+        margin: 25px auto;
+        display: block;
+    }
+
+    .icon-main {
+        margin: 25px auto;
+        display: block;
+        font-size: 9rem;
+        color: #666;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    p {
+        text-align: justify;
+        padding: 0px 20px;
+        color: #666;
+    }
+
+}
+
+form {
+    padding: 0 20px;
+}
+
+.error-item {
+    --border-color: #fff;
+
+    .error {
+        margin-top: 2px;
+        font-size: 0.9rem;
+        color: red;
+        float: left;
+    }
+    
+    .error:before {
+        content: '*'
+    }
+}
+
+ion-badge {
+    width: 80% !important;
+    height: 30px;
+    line-height: 25px;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}

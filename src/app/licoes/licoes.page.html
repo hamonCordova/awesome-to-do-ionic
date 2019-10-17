@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Lições
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let licao of licoes">
+      <ion-item (click)="showTarefas(licao.id)" [class.normal]="licao.prioridade == 1 ? 'normal' : ''" [class.medio]="licao.prioridade == 2 ? 'medio' : ''" [class.urgente]="licao.prioridade == 3 ? 'urgente' : ''">
+        
+        <img src="assets/icon/icons-licao/{{licao.icone}}.svg" />
+        <ion-label>
+          <h2>{{ licao.titulo }}</h2>
+          <span class="date">
+              <ion-icon slot="start" name="clock"></ion-icon> {{ licao.dataMax }}
+          </span>
+
+          <p *ngIf="licao.descricao">{{ licao.descricao }}</p>
+          <p *ngIf="licao.descricao == ''">Sem descrição</p>
+
+          <ion-badge *ngIf="licao.prioridade == 1" color="secondary">Normal</ion-badge>
+          <ion-badge *ngIf="licao.prioridade == 2" color="warning">Médio</ion-badge>
+          <ion-badge *ngIf="licao.prioridade == 3" color="danger">Urgente</ion-badge>
+
+        </ion-label>
+      </ion-item>
+        <ion-item-options>
+          <ion-item-option (click)="deleteLicao(licao.id)" color="danger">
+            <ion-icon slot="start" name="archive"></ion-icon>
+            Excluir
+          </ion-item-option>
+          <ion-item-option (click)="showLicao(licao.id)" color="warning">
+            <div><ion-icon slot="start" name="create"></ion-icon></div>
+            <p>Editar</p>
+          </ion-item-option>
+        </ion-item-options>
+     
+    </ion-item-sliding>
+
+
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addLicao()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

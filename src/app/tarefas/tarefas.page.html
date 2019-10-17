@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-button (click)="back()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        Tarefas
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+
+    <ion-list>
+      <ion-item-sliding *ngFor="let tarefa of tarefas">
+
+        <ion-item (click)="changeStatus(tarefa)" [class.normal]="tarefa.prioridade == 1 ? 'normal' : ''" [class.medio]="tarefa.prioridade == 2 ? 'medio' : ''" [class.alta]="tarefa.prioridade == 3 ? 'alta' : ''">
+          <ion-label>
+            <h2>{{ tarefa.titulo }}</h2>
+            <p>{{ tarefa.descricao }}</p>
+          </ion-label>
+          <ion-checkbox  color="medium" [checked]="tarefa.status == 1" slot="end"></ion-checkbox>
+        </ion-item>
+
+        <ion-item-options>
+          <ion-item-option (click)="deleteTarefa(tarefa.id)" color="danger">
+            <ion-icon slot="start" name="archive"></ion-icon>
+            Excluir
+           </ion-item-option>
+           <ion-item-option (click)="editTarefa(tarefa.id)" color="warning">
+            <ion-icon slot="start" name="create"></ion-icon>
+            Editar
+           </ion-item-option>
+        </ion-item-options>
+        
+      </ion-item-sliding>
+
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addTarefa()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+  </ion-content>

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isEditing">
+      Adicionar Lição
+    </ion-title>
+    <ion-title *ngIf="isEditing">
+      Alterar Lição
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <header>
+    <img (click)="showModalChooseIcon()" src="assets/icon/icons-licao/{{icone}}.svg" width="150px" />
+    
+    <div *ngIf="!isEditing">
+      <h1>Adicione uma Nova Lição</h1>
+      <p>As lições são como categorias, elas serverm para que você possa cadastrar tarefas dentro dessas lições</p>
+    </div>
+
+    <div *ngIf="isEditing">
+      <h1>Alterar Lição</h1>
+      <p>Você pode alterar os dados principais da lição ou então adicionar tarefas para ela, assim como consulta-las.</p>
+    </div>
+   
+  </header>
+
+  <form [formGroup]="licaoForm">
+    <ion-list>
+    
+      <ion-item>
+        <ion-label position="floating">Data de Término</ion-label>
+        <ion-input (click)="showDatePicker()" type="text" readonly="true" [(ngModel)]="dataMax" name="dataMax" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Título</ion-label>
+        <ion-input formControlName="titulo" name="titulo" type="text" min="1" max="50" required="true"></ion-input>
+      </ion-item>
+
+      <div *ngIf="licaoForm.controls.titulo.errors">
+        <ion-item *ngIf="licaoForm.controls.titulo.errors.required && licaoForm.controls.titulo.dirty" class="error-item" no-padding>
+          <span  class="error">
+            Você precisa preencher esse campo
+          </span>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-textarea formControlName="descricao" name="descricao" max="255"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-grid padding-bottom>
+      <ion-row>
+        <ion-col size="4">
+          <ion-badge [color]="prioridade == 1 ? 'secondary' : undefined" (click)="setPrioridade(1)">Normal</ion-badge>
+        </ion-col>
+        <ion-col size="4">
+          <ion-badge [color]="prioridade == 2 ? 'warning' : undefined" (click)="setPrioridade(2)">Médio</ion-badge>
+        </ion-col>
+        <ion-col size="4">
+          <ion-badge [color]="prioridade == 3 ? 'danger' : undefined" (click)="setPrioridade(3)">Urgente</ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-button *ngIf="!isEditing" margin-top expand="block" class="btn-purple" (click)="addLicao()" [disabled]="!licaoForm.valid">Cadastrar Lição</ion-button>
+    <ion-button *ngIf="isEditing" margin-top expand="block" class="btn-purple" (click)="editarLicao()" [disabled]="!licaoForm.valid">Alterar Lição</ion-button>
+    <br>
+
+  </form>
+
+</ion-content>

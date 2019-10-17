@@ -1,0 +1,46 @@
+header {
+
+    background: rgb(235, 235, 235);
+    text-align: center;
+    padding: 10px;
+
+    h1 {
+        color:rgb(59, 59, 59);
+    }
+
+    p {
+        margin-top: -10px;
+        color: rgb(151, 151, 151);
+    }
+
+}
+
+form {
+    
+    margin-top: -10px;
+    padding: 20px;
+
+    ion-textarea {
+        height: 100px;
+    }
+
+    .error {
+        color: red;
+        padding: 10px;
+    } 
+
+}
+
+
+#prioridades-grid {
+    padding-top: 20px;
+}
+
+ion-badge {
+    width: 80% !important;
+    height: 30px;
+    line-height: 25px;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}

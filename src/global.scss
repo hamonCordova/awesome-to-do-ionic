@@ -9,3 +9,11 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.btn-purple {
+    --background: linear-gradient(to top, #9e2ffe, #3989e0, #0dafd3);
+}
+
+.item-interactive {
+    --highlight-background: transparent !important;
+}
